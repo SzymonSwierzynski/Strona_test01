@@ -1,4 +1,4 @@
-/* Reset i podstawy */
+/* RESET I PODSTAWY */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -10,26 +10,63 @@ html {
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.6;
-    color: #2b2b2b;
-    background: #faf7f8;
+    font-family: "Nunito", sans-serif;
+    line-height: 1.7;
+    color: #241a33;
+    background: radial-gradient(circle at top left, #f8e9ff, #faf7ff 35%, #fff3f4 80%);
 }
 
-/* Layout pomocniczy */
+/* PALETA KOLORÓW */
+:root {
+    --violet-dark: #4c2a84;
+    --violet: #6d38c3;
+    --violet-light: #bda6ff;
+    --violet-pale: #f3ecff;
+
+    --rose: #ff9bb9;
+    --peach: #ffc48a;
+    --aqua: #8fd9d6;
+
+    --violet-gradient: linear-gradient(120deg, #8c5bff, #cda8ff);
+}
+
+/* LAYOUT */
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0 1.4rem;
 }
 
-/* HEADER / MENU */
+/* TYPOGRAFIA */
+h1, h2, h3 {
+    color: var(--violet-dark);
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+h1 {
+    font-size: 3rem;
+    font-family: "Great Vibes", cursive;
+    font-weight: 400;
+    color: #fff;
+}
+
+.section h2 {
+    font-size: 2.3rem;
+}
+
+.section h3 {
+    font-size: 1.4rem;
+}
+
+/* NAGŁÓWEK / MENU */
 .site-header {
     position: sticky;
     top: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid #eee;
+    background: linear-gradient(90deg, rgba(255, 247, 255, 0.96), rgba(237, 228, 255, 0.96));
+    border-bottom: 1px solid #ddcfff;
+    backdrop-filter: blur(10px);
     z-index: 10;
 }
 
@@ -37,55 +74,83 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
-}
-
-.logo {
-    text-decoration: none;
-    color: #333;
+    height: 78px;
 }
 
 .logo span {
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    line-height: 1.2;
+    font-family: "Great Vibes", cursive;
+    font-size: 1.9rem;
+    color: var(--violet-dark);
 }
 
-/* Menu desktop */
+/* MENU */
 .nav {
     display: flex;
     align-items: center;
 }
 
 .nav a {
-    margin-left: 1.5rem;
+    margin-left: 1.4rem;
     text-decoration: none;
-    color: #444;
     font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    color: #4d3c6e;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .nav a:hover {
-    color: #b45fb4;
+    color: var(--violet);
 }
 
-/* Przycisk hamburger */
 .nav-toggle {
     display: none;
     background: none;
     border: none;
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     cursor: pointer;
+    color: var(--violet-dark);
 }
 
-/* HERO */
+/* HERO – mocny fiolet z „bańkami” */
 .hero {
-    padding: 4rem 0 3rem;
-    background: radial-gradient(circle at top left, #fbe9ff, #faf7f8 50%);
+    position: relative;
+    padding: 4.5rem 0 3.5rem;
+    background: var(--violet-gradient);
+    color: white;
+    border-bottom: 1px solid #c5b3ff;
+    overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(12px);
+    opacity: 0.55;
+    z-index: 0;
+}
+
+.hero::before {
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, var(--rose), transparent 70%);
+    top: -60px;
+    right: -40px;
+}
+
+.hero::after {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, var(--aqua), transparent 70%);
+    bottom: -40px;
+    left: -40px;
 }
 
 .hero-inner {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     gap: 3rem;
@@ -93,121 +158,165 @@ body {
 }
 
 .hero-text h1 {
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
+    color: #fff;
+    font-size: 3.4rem;
 }
 
 .hero-text p {
-    max-width: 32rem;
-    margin-bottom: 1.5rem;
+    max-width: 34rem;
+    margin-bottom: 1.8rem;
+    font-size: 1.1rem;
+    color: #f9f5ff;
 }
 
 .hero-photo img {
-    max-width: 280px;
-    border-radius: 999px;
+    max-width: 300px;
+    border-radius: 22px;
     object-fit: cover;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    box-shadow: 0 28px 55px rgba(40, 0, 80, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0.35);
 }
 
-/* Przyciski */
+/* PRZYCISKI */
 .btn-primary,
 .btn-secondary {
     display: inline-block;
-    padding: 0.8rem 1.6rem;
+    padding: 0.85rem 1.9rem;
     border-radius: 999px;
     text-decoration: none;
     font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     cursor: pointer;
     border: none;
 }
 
 .btn-primary {
-    background: #b45fb4;
-    color: white;
+    background: #fefefe;
+    color: var(--violet-dark);
 }
 
 .btn-primary:hover {
-    opacity: 0.92;
+    background: #f4e9ff;
 }
 
 .btn-secondary {
-    border: 1px solid #b45fb4;
-    color: #b45fb4;
-    background: transparent;
+    border: 2px solid var(--violet);
+    color: var(--violet);
+    background: #fff;
 }
 
 .btn-secondary:hover {
-    background: #fbe9ff;
+    background: rgba(109, 56, 195, 0.08);
 }
 
-/* Sekcje */
+/* SEKCJE – kolorowe pasy */
 .section {
-    padding: 3rem 0;
+    padding: 3.2rem 0;
+    position: relative;
+}
+
+/* naprzemienne tła, żeby nie było „pustej bieli” */
+.section:nth-of-type(odd) {
+    background: #f5efff;
+}
+
+.section:nth-of-type(even) {
+    background: #fff6fb;
 }
 
 .section-alt {
-    background: #ffffff;
+    /* jeżeli używasz section-alt, delikatny mix barw */
+    background: radial-gradient(circle at top left, #f5efff, #fff6fb 70%);
 }
 
-.section h2 {
-    font-size: 1.7rem;
-    margin-bottom: 1rem;
-}
-
-.section h3 {
-    font-size: 1.2rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+.section h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    margin-top: 0.6rem;
+    background: linear-gradient(90deg, var(--violet), var(--rose), var(--peach));
+    border-radius: 999px;
 }
 
 .section p {
-    margin-bottom: 0.8rem;
+    margin-top: 0.6rem;
+    margin-bottom: 0.9rem;
+    color: #332548;
 }
 
-/* Karty w sekcji misji */
+/* KARTY – „Moje cele” z różnymi pastelami */
 .cards {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
 }
 
 .card {
     flex: 1 1 220px;
-    background: #fdf3ff;
-    border-radius: 12px;
-    padding: 1rem;
-    font-size: 0.95rem;
+    border-radius: 18px;
+    padding: 1.1rem 1.2rem;
+    font-size: 1rem;
+    border: 1px solid rgba(76, 42, 132, 0.12);
+    background: #fdf9ff;
 }
 
-/* Metody pracy */
+/* lekkie zróżnicowanie */
+.card:nth-child(1) {
+    background: #f8ecff;
+}
+.card:nth-child(2) {
+    background: #ffeef7;
+}
+.card:nth-child(3) {
+    background: #fff4e7;
+}
+
+/* METODY PRACY – kolorowe akcenty */
 .methods-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 1.8rem;
+    margin-top: 1.8rem;
 }
 
 .method {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.2rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid #e4d7ff;
+    box-shadow: 0 16px 45px rgba(80, 0, 120, 0.07);
+    position: relative;
+    overflow: hidden;
+}
+
+.method::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(189, 166, 255, 0.45), transparent 70%);
+    top: -40px;
+    right: -30px;
+    opacity: 0.8;
 }
 
 /* CTA */
 .cta {
     text-align: center;
-    background: linear-gradient(120deg, #fbe9ff, #fff7f0);
+    background: radial-gradient(circle at top, #f1ddff, #ffeef7 55%, #faf7ff 100%);
 }
 
-/* Kontakt */
+/* KONTAKT */
 .contact-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
-    gap: 2rem;
-    margin-top: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.1rem;
+    margin-top: 1.7rem;
 }
 
 .contact-list {
@@ -220,7 +329,7 @@ body {
 }
 
 .contact-list a {
-    color: #b45fb4;
+    color: var(--violet-dark);
     text-decoration: none;
 }
 
@@ -232,64 +341,62 @@ body {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    margin-top: 0.5rem;
+    gap: 0.9rem;
+    margin-top: 0.4rem;
 }
 
 .contact-form label {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    color: #3f2e55;
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 0.6rem 0.7rem;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    padding: 0.7rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid #ccb9ff;
     font: inherit;
-    resize: vertical;
+    background: #f8f4ff;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    outline: 2px solid #b45fb4;
+    outline: 2px solid var(--violet);
     border-color: transparent;
 }
 
 .form-note {
     font-size: 0.8rem;
-    color: #666;
+    color: #6a567f;
     margin-top: 0.6rem;
 }
 
-/* Stopka */
+/* STOPKA */
 .site-footer {
-    border-top: 1px solid #eee;
-    padding: 1rem 0;
-    background: #ffffff;
+    border-top: 1px solid #ddcfff;
+    padding: 1.2rem 0;
+    background: linear-gradient(90deg, #f5efff, #ffeef7);
 }
 
 .footer-inner {
     display: flex;
     justify-content: space-between;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
+    color: #5f497a;
 }
 
 /* RESPONSYWNOŚĆ */
 @media (max-width: 768px) {
     .nav {
-        display: none;       /* domyślnie ukryte na mobile */
+        display: none;
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 78px;
         right: 0;
         background: #ffffff;
-        padding: 0.8rem 1.5rem 1rem;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-    }
-
-    .nav a {
-        margin: 0.4rem 0;
+        padding: 1rem;
+        box-shadow: 0 12px 30px rgba(70, 0, 150, 0.15);
     }
 
     .nav.nav--open {
@@ -306,7 +413,7 @@ body {
     }
 
     .hero-photo img {
-        margin-top: 1rem;
+        margin-top: 1.4rem;
     }
 
     .contact-grid {
@@ -315,7 +422,7 @@ body {
 
     .footer-inner {
         flex-direction: column;
-        gap: 0.3rem;
+        gap: 0.4rem;
         text-align: center;
     }
 }
