@@ -13,20 +13,32 @@ body {
     font-family: "Nunito", sans-serif;
     line-height: 1.7;
     color: #241a33;
+    /* miękkie, pastelowe tło strony */
     background: radial-gradient(circle at top left, #f8e9ff, #faf7ff 35%, #fff3f4 80%);
 }
 
 /* PALETA KOLORÓW */
 :root {
+    /* fiolety */
     --violet-dark: #4c2a84;
     --violet: #6d38c3;
+    --violet-soft: #9d85ff;
     --violet-light: #bda6ff;
     --violet-pale: #f3ecff;
 
+    /* róże */
     --rose: #ff9bb9;
-    --peach: #ffc48a;
-    --aqua: #8fd9d6;
+    --rose-soft: #f9dde9;
 
+    /* brzoskwinie */
+    --peach: #ffc48a;
+    --peach-soft: #ffe2c4;
+
+    /* woda / natura */
+    --aqua: #8fd9d6;
+    --mint: #a7efd4;
+
+    /* gradient fiołkowy */
     --violet-gradient: linear-gradient(120deg, #8c5bff, #cda8ff);
 }
 
@@ -62,12 +74,12 @@ h1 {
 
 /* NAGŁÓWEK / MENU */
 .site-header {
-    position: sticky;
+    position: relative;          /* bez sticky jak na stronie bazowej */
     top: 0;
-    background: linear-gradient(90deg, rgba(255, 247, 255, 0.96), rgba(237, 228, 255, 0.96));
-    border-bottom: 1px solid #ddcfff;
-    backdrop-filter: blur(10px);
+    background: #ffffff;         /* czysta biel – jak tło logo */
+    border-bottom: 1px solid #e4e4e4;
     z-index: 10;
+    padding: 24px 0 12px;        /* wysokość paska */
 }
 
 .header-inner {
@@ -77,10 +89,26 @@ h1 {
     height: 78px;
 }
 
-.logo span {
-    font-family: "Great Vibes", cursive;
-    font-size: 1.9rem;
-    color: var(--violet-dark);
+/* LOGO W LEWYM GÓRNYM ROGU */
+.logo img {
+    height: 100px;          /* dopasuj do własnego gustu */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 78px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
 }
 
 /* MENU */
@@ -112,22 +140,30 @@ h1 {
     color: var(--violet-dark);
 }
 
-/* HERO – mocny fiolet z „bańkami” */
+/* HERO – tło: natura + fioletowy overlay */
 .hero {
     position: relative;
     padding: 4.5rem 0 3.5rem;
-    background: var(--violet-gradient);
     color: white;
     border-bottom: 1px solid #c5b3ff;
     overflow: hidden;
+
+    /* zdjęcie natury: las/pole/kwiaty */
+    background-image:
+            linear-gradient(135deg, rgba(40, 0, 80, 0.72), rgba(141, 87, 255, 0.6)),
+            url("img/nature-hero.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+/* delikatne „bańki” kolorów na wierzchu */
 .hero::before,
 .hero::after {
     content: "";
     position: absolute;
     border-radius: 999px;
-    filter: blur(12px);
+    filter: blur(16px);
     opacity: 0.55;
     z-index: 0;
 }
@@ -141,8 +177,8 @@ h1 {
 }
 
 .hero::after {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     background: radial-gradient(circle, var(--aqua), transparent 70%);
     bottom: -40px;
     left: -40px;
@@ -160,21 +196,23 @@ h1 {
 .hero-text h1 {
     color: #fff;
     font-size: 3.4rem;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
 }
 
 .hero-text p {
     max-width: 34rem;
     margin-bottom: 1.8rem;
     font-size: 1.1rem;
-    color: #f9f5ff;
+    color: #fdf9ff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
 .hero-photo img {
     max-width: 300px;
     border-radius: 22px;
     object-fit: cover;
-    box-shadow: 0 28px 55px rgba(40, 0, 80, 0.5);
-    border: 3px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 28px 55px rgba(40, 0, 80, 0.6);
+    border: 3px solid rgba(255, 255, 255, 0.5);
 }
 
 /* PRZYCISKI */
@@ -210,26 +248,30 @@ h1 {
     background: rgba(109, 56, 195, 0.08);
 }
 
-/* SEKCJE – kolorowe pasy */
+/* SEKCJE – kolorowe, ale spokojne pasy */
 .section {
     padding: 3.2rem 0;
     position: relative;
 }
 
-/* naprzemienne tła, żeby nie było „pustej bieli” */
+/* naprzemienne tła, żeby strona nie była „pusta” */
 .section:nth-of-type(odd) {
-    background: #f5efff;
-}
-
-.section:nth-of-type(even) {
-    background: #fff6fb;
-}
-
-.section-alt {
-    /* jeżeli używasz section-alt, delikatny mix barw */
     background: radial-gradient(circle at top left, #f5efff, #fff6fb 70%);
 }
 
+.section:nth-of-type(even) {
+    background: radial-gradient(circle at top right, #fdf1ff, #fff7ef 70%);
+}
+
+/* jeśli gdzieś używasz .section-alt, dajemy mix natury */
+.section-alt {
+    background:
+            radial-gradient(circle at top left, rgba(143, 217, 214, 0.18), transparent 55%),
+            radial-gradient(circle at bottom right, rgba(255, 155, 185, 0.18), transparent 55%),
+            #fffdfd;
+}
+
+/* ozdobna linia pod nagłówkiem */
 .section h2::after {
     content: "";
     display: block;
@@ -246,7 +288,7 @@ h1 {
     color: #332548;
 }
 
-/* KARTY – „Moje cele” z różnymi pastelami */
+/* KARTY – „Moje cele” z pastelami natury */
 .cards {
     list-style: none;
     display: flex;
@@ -264,18 +306,21 @@ h1 {
     background: #fdf9ff;
 }
 
-/* lekkie zróżnicowanie */
+/* lekkie zróżnicowanie kart */
 .card:nth-child(1) {
-    background: #f8ecff;
+    background: #f8ecff;   /* lawenda */
 }
 .card:nth-child(2) {
-    background: #ffeef7;
+    background: #ffeef7;   /* róż */
 }
 .card:nth-child(3) {
-    background: #fff4e7;
+    background: #fff4e7;   /* brzoskwinia */
+}
+.card:nth-child(4) {
+    background: #e9faf5;   /* mięta/woda */
 }
 
-/* METODY PRACY – kolorowe akcenty */
+/* METODY PRACY – natura + fiolet w kartach */
 .methods-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -293,11 +338,12 @@ h1 {
     overflow: hidden;
 }
 
+/* miękkie plamy koloru jak światło przez liście */
 .method::before {
     content: "";
     position: absolute;
-    width: 120px;
-    height: 120px;
+    width: 130px;
+    height: 130px;
     border-radius: 999px;
     background: radial-gradient(circle, rgba(189, 166, 255, 0.45), transparent 70%);
     top: -40px;
@@ -305,7 +351,19 @@ h1 {
     opacity: 0.8;
 }
 
-/* CTA */
+.method::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(167, 239, 212, 0.4), transparent 70%);
+    bottom: -40px;
+    left: -30px;
+    opacity: 0.8;
+}
+
+/* CTA – pasek „uzdrawiający” */
 .cta {
     text-align: center;
     background: radial-gradient(circle at top, #f1ddff, #ffeef7 55%, #faf7ff 100%);
